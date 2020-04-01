@@ -1,24 +1,29 @@
 <template>
     <div>
         <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Cras justo odio
-                <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
+            <li v-for="(item,index) of frutas" :key="item.id" @click="aumentar(index)"
+            class="list-group-item d-flex justify-content-between align-items-center">
+                {{item.name}}
+                <span class="badge badge-primary badge-pill">{{item.quantity}}</span>
             </li>
         </ul>
+        <button class="btn btn-danger btn-block mt-3" @click="reiniciar">Reiniciar</button>
     </div>
 </template>
 
 <script>
+
+import {mapState, mapMutations} from 'vuex';
+
 export default {
-    name: 'Lista'
+    name: 'Lista',
+    computed:{
+        ...mapState(['frutas']),
+        
+    },
+    methods:{
+        ...mapMutations(['aumentar', 'reiniciar'])
+    }
+
 }
 </script>

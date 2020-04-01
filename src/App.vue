@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-5">
     <Cabecera></Cabecera>
     <lista></lista>
   </div>
